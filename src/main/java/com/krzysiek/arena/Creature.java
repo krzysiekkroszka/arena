@@ -62,7 +62,7 @@ public abstract class Creature implements Fightable{
 
     public Integer getLifePoints() {
         return lifePoints;
-
+//  komentarz
     }
 
     public CreatureType getType() {
