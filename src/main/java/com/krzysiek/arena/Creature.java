@@ -1,5 +1,6 @@
 package com.krzysiek.arena;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -118,4 +119,21 @@ public abstract class Creature implements Fightable{
             }
         }
     }
+
+    BodyPart randomBodyPart() throws NoBodyPartException{
+
+        Random rand = new Random();
+        Double hitValue = rand.nextDouble();
+
+        int i = 0;
+        Double rangeEnd = 0.0;
+        while (i < BodyPart.values().length){
+            rangeEnd += BodyPart.values()[i].getHitProbabilty();
+            if (hitValue < rangeEnd)
+                return BodyPart.values()[i];
+            i++;
+        }
+        throw new NoBodyPartException();
+    }
+
 }
